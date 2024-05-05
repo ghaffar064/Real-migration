@@ -1,0 +1,30 @@
+.nav-menu{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-menu li{
+    margin: 0px 20px;
+
+
+}
+.nav-menu li a{
+    text-decoration: none;
+    color: blue;
+}
+
+.book-appointment{
+    color: red;
+}
+.mobile-nav{
+    list-style: none;
+}
+.mobile-nav li{
+    margin-top: 20px;
+}
+.mobile-nav li a{
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: grey;
+}
