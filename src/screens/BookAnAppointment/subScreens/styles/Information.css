@@ -1,0 +1,25 @@
+input[type="tel"]
+.PhoneInput {
+    width: 100%;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+.PhoneInput input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+  }
+  
+  .PhoneInputCountrySelect {
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: #f3f3f3;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    display: inline-block;
+  }

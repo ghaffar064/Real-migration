@@ -1,0 +1,15 @@
+.booknetic_appointment {
+    border: 2px solid #ccc;
+    border-radius: 18px;
+    padding: 20px;
+    background-color: red;
+  }
+  
+  .booknetic_appointment  {
+    color: green;
+  }
+  
+  .booknetic_appointment p {
+    color: red;
+  }
+  

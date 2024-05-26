@@ -11,6 +11,7 @@ import Visas from '../src/screens/Visas/Visas'
 import PageNotFound from '../src/screens/PageNotFound/PageNotFound'
 import Login from './screens/Login/Login';
 import Signup from './screens/Signup/Signup';
+import Confirmation from './screens/BookAnAppointment/subScreens/Confirmation';
 const globalStyles = css`
   body, html, #root {
     margin: 0;
@@ -22,7 +23,9 @@ const globalStyles = css`
   }
 `;
 
+
 function App() {
+
   return (
    
   
@@ -32,13 +35,16 @@ function App() {
           <Route path='/aboutus' element={<AboutUs/>}/>
           <Route path='/blog' element={<Blog/>}/>
           <Route path='/bookanappointment' element={<BookAnAppointment/>}/>
-          <Route path='*' element={<PageNotFound/>}/>
+        
           <Route path='/studentinfohub' element={<StudentInformationHub/>}/>
           <Route path='/visaapply' element={<VisaApply/>}/>
           <Route path='/visas' element={<Visas/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<Signup/>}/>
+          <Route path='/confirmation' element={<Confirmation/>}/>
+          <Route path='*' element={<PageNotFound/>}/>
         </Routes>
+       
 
   
   );

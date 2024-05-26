@@ -1,69 +1,83 @@
-import React, { useState } from 'react';
-import Layout from '../../components/Layout/Layout';
-import { TextField, Button, Box, Checkbox, Typography, Link } from '@mui/material';
+import React,{useState,useEffect} from 'react';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
 
 export default function Login() {
-  const [checked, setChecked] = useState(false);
 
-  const handleCheckboxChange = (event) => {
-    setChecked(event.target.checked);
-  };
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const navigate = useNavigate();
+  
 
-  return (
-    <Layout>
+function signin(e){
+    e.preventDefault()
+ 
+  let data = {email,password}
+           
+        axios.post("/user/login",data).then((response)=>{
+          console.log(response)
+          if(response.status===201)
+          {
+            navigate("/");
+
+          }
+        }).catch((e)=>{
+          console.log(e)
+        })
         
-      <Box
-        component="form"
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '90vh', // Adjust height as needed
-          gap: '30px', // Add margin between input fields and buttons
-        }}
-      >
-        <TextField
-          required
-          id="standard-required"
-          label="Enter your email"
-          variant="standard"
-          type="email"
-          placeholder="Email"
-          sx={{ width: '100%', maxWidth: '500px' }} // Adjust width for responsiveness
-        />
-        <TextField
-          id="standard-password-input"
-          label="Enter your Password"
-          type="password"
-          autoComplete="current-password"
-          variant="standard"
-          placeholder="Enter Password"
-          sx={{ width: '100%', maxWidth: '500px' }} // Adjust width for responsiveness
-        />
-        <Box sx={{ display: 'flex', alignItems: 'center', mr: 3 }}> {/* Container for Checkbox and text */}
-          <Checkbox
-            checked={checked}
-            onChange={handleCheckboxChange}
-            inputProps={{ 'aria-label': 'Keep me signed in' }}
-          />
-          <span>Keep me signed in</span>
-        </Box>
-        <Box sx={{ display: 'flex', gap: '25px', alignItems: 'center' }}> {/* Wrapper for buttons and Forgot Password */}
-          <Button variant="contained" color="primary">
-            Login
-          </Button>
-          <Button variant="contained" color="grey">
-            Register
-          </Button>
-         
-        </Box>
-        <Typography variant="body2">
-            <Link href="#" color="textSecondary">
-              Forgot Password?
-            </Link>
-          </Typography>
-      </Box>
-    </Layout>
+        }
+  return (
+    <div
+    style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '70vh',
+        
+      }}
+    >
+    
+       <Form  onSubmit={signin}>
+       <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="email" placeholder="name@example.com" onChange={(e)=>setEmail(e.target.value)} />
+        <Form.Text className="text-muted">
+          We'll never share your email with anyone else.
+        </Form.Text>
+      </Form.Group>
+
+           <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password"
+        id="inputPassword5" placeholder='password'
+        aria-describedby="passwordHelpBlock"
+        onChange={(e)=>setPassword(e.target.value)} />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+       
+      </Form.Group>       
+
+
+       
+        
+    
+      <Button type="submit" 
+       
+      style={{
+           display: 'flex',
+           alignItems: 'center',
+           justifyContent: 'center'
+        ,padding:15,backgroundColor:'black',marginLeft:50,
+          borderColor:'white',marginTop:40,paddingLeft:80,paddingRight:80}}>Login</Button>
+    
+  
+    </Form>
+                
+    </div>
   );
 }
